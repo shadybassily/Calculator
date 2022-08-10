@@ -24,11 +24,21 @@ button {
   background-color: #353b4871;
   box-shadow: 18px 18px 15px rgba(0, 0, 0, 0.274);
 }
+
 .calc .calc-screen {
   padding: 5px 10px;
-  height: 20vh;
+  height: 25vh;
   position: relative;
 }
+
+.calc .calc-screen .light-mode-btn {
+  background-color: rgba(0, 0, 0, 0.548);
+  border-radius: 10px;
+  width: 2.5vw;
+  position: absolute;
+  right: 0.05rem;
+}
+
 .calc .calc-screen .prev-operand,
 .current-operand {
   font-size: 30px;
@@ -99,6 +109,7 @@ button {
   .calc .calc-body {
     gap: 10px;
   }
+
 }
 
 @media only screen and (min-width: 750px) {
@@ -112,6 +123,8 @@ button {
   .calc .calc-body .delete {
     font-size: 20px;
   }
+
+
 }
 @media only screen and (min-width: 1000px) {
   .calc {
@@ -126,6 +139,7 @@ button {
   .calc .calc-body .nums {
     font-size: 25px;
   }
+
 }
 
 @media only screen and (min-width: 1300px) {
@@ -141,7 +155,6 @@ button {
   .calc .calc-body {
     height: 50vh;
   }
-  .calc .calc-body .nums {
-    font-size: 25px;
-  }
+
+
 }

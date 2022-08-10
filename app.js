@@ -36,21 +36,27 @@ class Calculator {
       0,
       this.currentOperand.length - 1
     );
+    this.history = this.currentOperand
   }
 
   //
   appendNum(number) {
-    //to prevent adding multiple .
+    //controlling the -ve sign
     if(number == "-" && this.currentOperand != ""){
       return
     }
+    //to prevent adding multiple .
     if (number == ".") {
       if (this.currentOperand.includes(".")) {
         return;
       }
     }
+    if(this.history[this.history.length-1] == "="){
+      this.clear()
+    }
     this.currentOperand += number;
     this.history += number
+    
   }
 
   //display the result
@@ -93,13 +99,13 @@ class Calculator {
         break;
       case "%":
         result = Number(this.previousOperand) / 100;
-        
         break;
     }
 
     this.operator = undefined;
     this.currentOperand = result;
     this.previousOperand = "";
+    this.history += "="
   }
 
   chooseOperation(operator) {
