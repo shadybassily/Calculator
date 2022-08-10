@@ -24,6 +24,7 @@ class Calculator {
     this.previousOperand = "";
     this.currentOperand = "";
     this.operator = undefined;
+    this.history = ""
     this.updateDisplay();
   }
 
@@ -38,6 +39,9 @@ class Calculator {
   //
   appendNum(number) {
     //to prevent adding multiple .
+    if(number == "-" && this.currentOperand != ""){
+      return
+    }
     if (number == ".") {
       if (this.currentOperand.includes(".")) {
         return;
