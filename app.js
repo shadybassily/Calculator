@@ -10,14 +10,16 @@ let negative = document.querySelector(".negative");
 //displaying the results
 let prevOperandElement = document.querySelector(".prev-operand");
 let currentOperandElement = document.querySelector(".current-operand");
-let operationsHistory = document.querySelector('.history')
-
+let operationsHistory = document.querySelector(".history");
+//light-mode
+let lightModeBtn = document.querySelector(".light-mode-btn");
+let calc = document.querySelector(".calc");
 class Calculator {
   //passing display elements
   constructor(prevOperandElement, currentOperandElement, operationsHistory) {
     this.prevOperandElement = prevOperandElement;
     this.currentOperandElement = currentOperandElement;
-    this.operationsHistory = operationsHistory
+    this.operationsHistory = operationsHistory;
     //clear the displayed nums once the calculator is created
     this.clear();
   }
@@ -26,7 +28,7 @@ class Calculator {
     this.previousOperand = "";
     this.currentOperand = "";
     this.operator = undefined;
-    this.history = ""
+    this.history = "";
     this.updateDisplay();
   }
 
@@ -36,14 +38,14 @@ class Calculator {
       0,
       this.currentOperand.length - 1
     );
-    this.history = this.currentOperand
+    this.history = this.currentOperand;
   }
 
   //
   appendNum(number) {
     //controlling the -ve sign
-    if(number == "-" && this.currentOperand != ""){
-      return
+    if (number == "-" && this.currentOperand != "") {
+      return;
     }
     //to prevent adding multiple .
     if (number == ".") {
@@ -51,21 +53,23 @@ class Calculator {
         return;
       }
     }
-    if(this.history[this.history.length-1] == "="){
-      this.clear()
-    }
+    //if the last char of history is equal
+    //then we should clear the previous operation
+    // if (this.history[this.history.length - 1] == "=") {
+    //   this.clear();
+    // }
     this.currentOperand += number;
-    this.history += number
-    
+
+    this.history += number;
   }
 
   //display the result
   updateDisplay() {
     if (
-      this.currentOperand == Infinity ||
-      this.previousOperand == Infinity ||
-      this.currentOperand == NaN ||
-      this.previousOperand == NaN
+      this.currentOperand === Infinity ||
+      this.previousOperand === Infinity ||
+      this.currentOperand === NaN ||
+      this.previousOperand === NaN
     ) {
       this.prevOperandElement.innerHTML = "";
       this.currentOperandElement.innerHTML = "";
@@ -75,7 +79,6 @@ class Calculator {
       this.currentOperandElement.innerHTML = this.currentOperand;
       this.operationsHistory.innerHTML = this.history;
     }
-    
   }
 
   //do the math
@@ -105,10 +108,14 @@ class Calculator {
     this.operator = undefined;
     this.currentOperand = result;
     this.previousOperand = "";
-    this.history += "="
+    // if (!this.currentOperand) {
+    //   this.history += "=";
+    // }
   }
 
   chooseOperation(operator) {
+    let ops = ["+", "-", "/", "x"];
+
     if ((this.currentOperand === "") & (this.operator == undefined)) return;
     //already have operand (operator) operand?
     //then finish the previous math first
@@ -116,19 +123,30 @@ class Calculator {
       this.compute();
     }
     this.operator = operator;
-    this.history += operator
+    //if multiple operaors were inserted in a row
+    //then we will assign the latest operator
+    if (ops.includes(this.history.slice(this.history.length - 1))) {
+      let historyArr = this.history.split("")
+      historyArr.pop()
+      this.history = historyArr.join("")
+    }
+    this.history += operator;
     this.previousOperand = this.currentOperand;
     this.currentOperand = "";
   }
 }
 
-let calculator = new Calculator(prevOperandElement, currentOperandElement, operationsHistory);
+let calculator = new Calculator(
+  prevOperandElement,
+  currentOperandElement,
+  operationsHistory
+);
 
 clearBtn.addEventListener("click", () => {
   calculator.clear();
   calculator.updateDisplay();
   removeActiveClass(operators, "active-operator");
-  removeActiveClass(nums,"num-pressed");
+  removeActiveClass(nums, "num-pressed");
 });
 
 nums.forEach((num) =>
@@ -141,6 +159,7 @@ nums.forEach((num) =>
 function removeActiveClass(targetElements, targetClass) {
   targetElements.forEach((targetElement) => {
     targetElement.classList.remove(targetClass);
+    targetElement.style.transition = "0.3s";
   });
 }
 
@@ -157,7 +176,7 @@ operators.forEach((operator) => {
 
 equalBtn.addEventListener("click", () => {
   removeActiveClass(operators, "active-operator");
-  removeActiveClass(nums,"num-pressed");
+  removeActiveClass(nums, "num-pressed");
   calculator.compute();
   calculator.updateDisplay();
 });
@@ -174,7 +193,22 @@ negative.addEventListener("click", () => {
 
 nums.forEach((num) => {
   num.addEventListener("click", () => {
-    removeActiveClass(nums,"num-pressed");
+    removeActiveClass(nums, "num-pressed");
     num.classList.add("num-pressed");
   });
+});
+
+//light mode
+lightModeBtn.addEventListener("click", () => {
+  if (document.body.style.color != "black") {
+    document.body.style.color = "black";
+    calc.style.backgroundColor = "#f1f2f6";
+    calc.style.transition = "0.5s";
+    lightModeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    lightModeBtn.style.transition = "0.2s";
+  } else {
+    document.body.style.color = "#f1f2f6";
+    calc.style.backgroundColor = "#353b4871";
+    lightModeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+  }
 });

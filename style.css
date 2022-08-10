@@ -6,14 +6,15 @@
 }
 body {
   background-color: #1e272e;
+  color: rgba(255, 255, 255, 0.678);
 }
 button {
   border: 1px solid #2c2f3418;
   border-radius: 10px;
+  color: inherit;
   background-color: transparent;
   box-shadow: -2px -5px 5px rgba(255, 255, 255, 0.122),
     5px 5px 5px rgba(0, 0, 0, 0.524);
-  color: rgba(255, 255, 255, 0.678);
 }
 
 .calc {
@@ -32,22 +33,19 @@ button {
 }
 
 .calc .calc-screen .light-mode-btn {
-  background-color: rgba(0, 0, 0, 0.548);
   border-radius: 10px;
-  width: 2.5vw;
   position: absolute;
   right: 0.05rem;
+  cursor: pointer;
 }
 
 .calc .calc-screen .prev-operand,
 .current-operand {
   font-size: 30px;
   font-weight: bolder;
-  color: rgba(255, 255, 255, 0.85);
   word-wrap: break-word;
 }
 .calc .calc-screen .history {
-  color: rgba(255, 255, 255, 0.492);
   font-weight: bolder;
   font-size: 20px;
   position: absolute;
@@ -69,7 +67,6 @@ button {
   font-size: 25px;
   font-weight: bold;
   background-color: #f53b57ba;
-  color: rgba(255, 255, 255, 0.859);
 }
 .calc .calc-body .delete,
 .equal {
@@ -77,21 +74,19 @@ button {
 }
 
 .calc .calc-body .nums {
-  color: rgba(255, 255, 255, 0.915);
   font-size: 20px;
-  font-weight: bold;
+  font-weight: bolder;
   transition: 0.2s;
 }
 .num-pressed {
-  background-color: #1e272e;
-  color: #ffffff !important;
+  color: #ff7f50;
 }
 .negative,
 .operators {
   font-size: 25px;
 }
 .active-operator {
-  background-color: rgba(255, 255, 255, 0.79);
+  background-color: #ff7f50;
   color: black;
 }
 
@@ -109,7 +104,6 @@ button {
   .calc .calc-body {
     gap: 10px;
   }
-
 }
 
 @media only screen and (min-width: 750px) {
@@ -123,8 +117,6 @@ button {
   .calc .calc-body .delete {
     font-size: 20px;
   }
-
-
 }
 @media only screen and (min-width: 1000px) {
   .calc {
@@ -139,7 +131,6 @@ button {
   .calc .calc-body .nums {
     font-size: 25px;
   }
-
 }
 
 @media only screen and (min-width: 1300px) {
@@ -149,12 +140,11 @@ button {
   .calc .calc-body .operators,
   .calc .calc-body .negative,
   .calc .calc-body .clear,
-  .calc .calc-body .delete {
-    font-size: 25px;
+  .calc .calc-body .delete,
+  .calc .calc-body .nums {
+    font-size: 20px;
   }
   .calc .calc-body {
-    height: 50vh;
+    height: 45vh;
   }
-
-
 }
