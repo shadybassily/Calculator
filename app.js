@@ -50,7 +50,7 @@ class Calculator {
       }
     }
     this.currentOperand += number;
-    this.history += this.currentOperand
+    this.history += number
   }
 
   //display the result
@@ -93,6 +93,7 @@ class Calculator {
         break;
       case "%":
         result = Number(this.previousOperand) / 100;
+        
         break;
     }
 

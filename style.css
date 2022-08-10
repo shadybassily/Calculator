@@ -27,6 +27,7 @@ button {
 .calc .calc-screen {
   padding: 5px 10px;
   height: 20vh;
+  position: relative;
 }
 .calc .calc-screen .prev-operand,
 .current-operand {
@@ -34,6 +35,13 @@ button {
   font-weight: bolder;
   color: rgba(255, 255, 255, 0.85);
   word-wrap: break-word;
+}
+.calc .calc-screen .history {
+  color: rgba(255, 255, 255, 0.492);
+  font-weight: bolder;
+  font-size: 20px;
+  position: absolute;
+  bottom: 1.5rem;
 }
 
 .calc .calc-body {
@@ -76,9 +84,6 @@ button {
   background-color: rgba(255, 255, 255, 0.79);
   color: black;
 }
-
-
-
 
 @media only screen and (max-width: 700px) {
   .calc {
