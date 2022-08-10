@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+}
+body {
+  background-color: #1e272e;
+}
+button {
+  border: 1px solid #2c2f3418;
+  border-radius: 10px;
+  background-color: transparent;
+  box-shadow: -2px -5px 5px rgba(255, 255, 255, 0.122),
+    5px 5px 5px rgba(0, 0, 0, 0.524);
+  color: rgba(255, 255, 255, 0.678);
+}
+
+.calc {
+  border-radius: 10px;
+  width: 40vw;
+  padding: 15px;
+  margin: 5% auto;
+  background-color: #353b4871;
+  box-shadow: 18px 18px 15px rgba(0, 0, 0, 0.274);
+}
+.calc .calc-screen {
+  padding: 5px 10px;
+  height: 20vh;
+}
+.calc .calc-screen .prev-operand,
+.current-operand {
+  font-size: 30px;
+  font-weight: bolder;
+  color: rgba(255, 255, 255, 0.85);
+  word-wrap: break-word;
+}
+
+.calc .calc-body {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 15px;
+  height: 60vh;
+}
+
+.two-cols {
+  grid-column: 1 / span 2;
+}
+
+.calc .calc-body .clear {
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #f53b57ba;
+  color: rgba(255, 255, 255, 0.859);
+}
+.calc .calc-body .delete,
+.equal {
+  font-size: 20px;
+}
+
+.calc .calc-body .nums {
+  color: rgba(255, 255, 255, 0.915);
+  font-size: 20px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.num-pressed {
+  background-color: #1e272e;
+  color: #ffffff !important;
+}
+.negative,
+.operators {
+  font-size: 25px;
+}
+.active-operator {
+  background-color: rgba(255, 255, 255, 0.79);
+  color: black;
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+  .calc {
+    width: 45vw;
+  }
+
+  .calc .calc-body .operators,
+  .calc .calc-body .negative,
+  .calc .calc-body .clear,
+  .calc .calc-body .delete {
+    font-size: 20px;
+  }
+  .calc .calc-body {
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .calc {
+    width: 35vw;
+  }
+
+  .calc .calc-body .operators,
+  .calc .calc-body .negative,
+  .calc .calc-body .clear,
+  .calc .calc-body .delete {
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .calc {
+    width: 30vw;
+  }
+  .calc .calc-body .operators,
+  .calc .calc-body .negative,
+  .calc .calc-body .clear,
+  .calc .calc-body .delete {
+    font-size: 20px;
+  }
+  .calc .calc-body .nums {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .calc {
+    width: 25vw;
+  }
+  .calc .calc-body .operators,
+  .calc .calc-body .negative,
+  .calc .calc-body .clear,
+  .calc .calc-body .delete {
+    font-size: 25px;
+  }
+  .calc .calc-body {
+    height: 50vh;
+  }
+  .calc .calc-body .nums {
+    font-size: 25px;
+  }
+}
