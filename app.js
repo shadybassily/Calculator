@@ -10,12 +10,14 @@ let negative = document.querySelector(".negative");
 //displaying the results
 let prevOperandElement = document.querySelector(".prev-operand");
 let currentOperandElement = document.querySelector(".current-operand");
+let operationsHistory = document.querySelector('.history')
 
 class Calculator {
   //passing display elements
-  constructor(prevOperandElement, currentOperandElement) {
+  constructor(prevOperandElement, currentOperandElement, operationsHistory) {
     this.prevOperandElement = prevOperandElement;
     this.currentOperandElement = currentOperandElement;
+    this.operationsHistory = operationsHistory
     //clear the displayed nums once the calculator is created
     this.clear();
   }
@@ -48,6 +50,7 @@ class Calculator {
       }
     }
     this.currentOperand += number;
+    this.history += this.currentOperand
   }
 
   //display the result
@@ -60,10 +63,13 @@ class Calculator {
     ) {
       this.prevOperandElement.innerHTML = "";
       this.currentOperandElement.innerHTML = "";
+      this.operationsHistory.innerHTML = "";
     } else {
       this.prevOperandElement.innerHTML = this.previousOperand;
       this.currentOperandElement.innerHTML = this.currentOperand;
+      this.operationsHistory.innerHTML = this.history;
     }
+    
   }
 
   //do the math
@@ -103,12 +109,13 @@ class Calculator {
       this.compute();
     }
     this.operator = operator;
+    this.history += operator
     this.previousOperand = this.currentOperand;
     this.currentOperand = "";
   }
 }
 
-let calculator = new Calculator(prevOperandElement, currentOperandElement);
+let calculator = new Calculator(prevOperandElement, currentOperandElement, operationsHistory);
 
 clearBtn.addEventListener("click", () => {
   calculator.clear();
