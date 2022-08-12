@@ -24,6 +24,9 @@ button {
   margin: 5% auto;
   background-color: #353b4871;
   box-shadow: 18px 18px 15px rgba(0, 0, 0, 0.274);
+  /* to resize */
+  overflow: auto;
+  resize: both;
 }
 
 .calc .calc-screen {

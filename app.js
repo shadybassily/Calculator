@@ -126,9 +126,9 @@ class Calculator {
     //if multiple operaors were inserted in a row
     //then we will assign the latest operator
     if (ops.includes(this.history.slice(this.history.length - 1))) {
-      let historyArr = this.history.split("")
-      historyArr.pop()
-      this.history = historyArr.join("")
+      let historyArr = this.history.split("");
+      historyArr.pop();
+      this.history = historyArr.join("");
     }
     this.history += operator;
     this.previousOperand = this.currentOperand;
