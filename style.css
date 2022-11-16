@@ -31,7 +31,7 @@ button {
 
 .calc .calc-screen {
   padding: 5px 10px;
-  height: 25vh;
+  height: 30%;
   position: relative;
 }
 
@@ -59,7 +59,7 @@ button {
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 15px;
-  height: 60vh;
+  height: 60%;
 }
 
 .two-cols {
@@ -95,7 +95,7 @@ button {
 
 @media only screen and (max-width: 700px) {
   .calc {
-    width: 45vw;
+    width: 80%;
   }
 
   .calc .calc-body .operators,
@@ -111,7 +111,7 @@ button {
 
 @media only screen and (min-width: 750px) {
   .calc {
-    width: 35vw;
+    width: 50%;
   }
 
   .calc .calc-body .operators,
