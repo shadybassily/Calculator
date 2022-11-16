@@ -5,7 +5,8 @@
   font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
 }
 body {
-  background-color: #1e272e;
+  /* background-color: #1e272e; */
+
   color: rgba(255, 255, 255, 0.678);
 }
 button {
